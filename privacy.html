@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expecta Write-back · Privacy policy</title>
+<style>
+  :root { --navy:#002199; --amber:#FFA400; --line:#D9E4F2; --card:#F3F7FC; --grey:#808080; }
+  body { margin:0; background:#fff; color:#000; font:16px/1.6 "Segoe UI", system-ui, sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:48px 16px 64px; }
+  .eyebrow { font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; }
+  h1 { font:700 34px/1.2 Montserrat, "Segoe UI", sans-serif; color:var(--navy); margin:6px 0 4px; }
+  h1 .dot { color:var(--amber); }
+  h2 { font:600 19px/1.3 "Segoe UI", sans-serif; color:var(--navy); margin:32px 0 8px; }
+  table { border-collapse:collapse; width:100%; margin:8px 0; font-size:15px; }
+  th, td { text-align:left; vertical-align:top; padding:8px 10px; border-bottom:1px solid var(--line); }
+  th { background:var(--card); color:var(--navy); font-weight:600; }
+  .note { background:var(--card); border-radius:8px; padding:12px 16px; }
+  .muted { color:var(--grey); font-size:14px; }
+  a { color:var(--navy); }
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">Expecta Write-back</div>
+<h1>Privacy policy<span class="dot">.</span></h1>
+<p class="muted">Last updated: 3 November 2026</p>
+
+<p>This policy explains what personal data the <b>Expecta Write-back</b> Power BI visual and the Expecta Write-back service process, why, and for how long. It covers only this product; the general Expecta website policy is at <a href="https://expecta.ai">expecta.ai</a>.</p>
+
+<h2>Who we are</h2>
+<p>Expecta Srl, Via Bezzecca 3, 00185 Roma, Italy. VAT IT17186851006. Contact: <a href="mailto:waddah.alhajar@expecta.io">waddah.alhajar@expecta.io</a>.</p>
+
+<h2>Our role</h2>
+<p>Expecta Write-back is used by organisations inside their own Power BI reports, to save values to their own data warehouse. Saving works only after a one-time setup with Expecta: the organisation contacts us, and its database administrator gives the Expecta Write-back application write permission on the chosen table. Until then the service refuses every save, and nothing is written anywhere.</p>
+<ul>
+  <li><b>Edited values and the edit log:</b> your organisation is the <b>controller</b>. Expecta is its <b>processor</b> and acts only on its instructions, under the Standard Contract for Microsoft Marketplace (section 2.3) that your organisation accepts with the offer.</li>
+  <li><b>Service logs and sign-in sessions</b> (below): Expecta is the <b>controller</b>.</li>
+</ul>
+
+<h2>What we process</h2>
+<table>
+  <tr><th>Data</th><th>Where it comes from</th><th>Why</th></tr>
+  <tr><td>Your account identifiers: name, user name (e-mail), Microsoft Entra object ID and tenant ID</td><td>The sign-in token that Power BI (or Microsoft sign-in) gives the visual for our service</td><td>To know who is saving, to check your access, and to record who made each change</td></tr>
+  <tr><td>The values you edit or add, with the row and column they belong to</td><td>You, in the report</td><td>To save them to your organisation's data warehouse</td></tr>
+  <tr><td>Technical data: time, request path, status, IP address, browser type, request ID, number of changes, table name, error type</td><td>Your browser and our hosting</td><td>To run, secure and troubleshoot the service</td></tr>
+</table>
+<p>We don't use this data for marketing, profiling, or anything other than providing the service, and we don't sell it.</p>
+
+<h2>How it flows</h2>
+<ol>
+  <li>When you save, the visual sends the changed values and your sign-in token to the Expecta Write-back service.</li>
+  <li>The service checks your token, then asks Power BI, <b>as you</b>, whether you can see the rows you changed (your report's row-level security decides). If you can't, nothing is saved.</li>
+  <li>The service writes the values to <b>your organisation's data warehouse</b>, together with an edit log: who, when, which row, which column, the new value. That log is stored in your organisation's database, not by Expecta.</li>
+</ol>
+
+<h2>What we keep, and for how long</h2>
+<table>
+  <tr><th>What</th><th>Kept</th></tr>
+  <tr><td>Edited values and the edit log</td><td>Not kept by Expecta. They are stored in your organisation's data warehouse, under its retention rules.</td></tr>
+  <tr><td>Service logs: for each request its time, method, path, status, IP address and browser type (on the sign-in pages the path also holds a one-time sign-in value); for each save its request ID, number of changes, table name and any error type. Edited values and user names are not logged.</td><td>30 days, in Azure Log Analytics in Italy North. Only Expecta's two Azure administrators, our deployment automation and Azure's own security services can access it.</td></tr>
+  <tr><td>Sign-in sessions (only when signing in with a code instead of Power BI single sign-on)</td><td>Kept only in the service's memory, under a hash of the session key: up to 30 days after last use and at most 90 days. A restart of the service ends them; signing out deletes them.</td></tr>
+  <tr><td>Sign-in key in the visual (code sign-in only)</td><td>Kept in Power BI's storage for visuals on your device, per user and per visual, so you stay signed in. Used only for sign-in. Signing out deletes it; Power BI clears it 29 days after it was last written.</td></tr>
+</table>
+
+<h2>Legal basis</h2>
+<ul>
+  <li>Edited values and the edit log: the basis your organisation chooses, as controller.</li>
+  <li>Service logs and sign-in sessions: Expecta's legitimate interest in running a secure, working service (Article 6(1)(f) GDPR). The sign-in key is stored on your device only because it is strictly necessary for the sign-in you asked for, so no consent is needed for it (ePrivacy Directive, Article 5(3)).</li>
+</ul>
+
+<h2 id="subprocessors">Where it is processed, and subprocessors</h2>
+<p>The service runs on Microsoft Azure in the <b>Italy North</b> region (European Union). Power BI and Microsoft Entra ID are provided to your organisation under its own Microsoft agreement, not by Expecta.</p>
+<table>
+  <tr><th>Subprocessor</th><th>Service</th><th>Location</th><th>Purpose</th></tr>
+  <tr><td>Microsoft (Microsoft Azure)</td><td>Azure App Service, Azure Log Analytics</td><td>Italy North, EU</td><td>Running the service; service logs</td></tr>
+</table>
+<p>Transfers outside the European Economic Area, if any (for example Microsoft support access), are covered by the EU Standard Contractual Clauses, as section 2.1 of the Standard Contract provides. We give at least 14 days' notice on this page before a new subprocessor gets access to personal data.</p>
+
+<h2>Security</h2>
+<ul>
+  <li>The service accepts only Microsoft work or school accounts signed in through Microsoft Entra ID, and checks every change against your report's row-level security, as you.</li>
+  <li>The service writes only to tables on its allow-list, and only in databases where your organisation gave the Expecta Write-back application access.</li>
+  <li>All traffic is encrypted: HTTPS only (TLS 1.2 or later) to the service, and encrypted connections to your database. The service's secret is kept in Azure Key Vault.</li>
+</ul>
+
+<h2>Your rights</h2>
+<p>Under the GDPR you can ask for a copy of your personal data, its correction or erasure, restriction of its processing, and you can object to processing based on legitimate interests.</p>
+<ul>
+  <li><b>Edited values and the edit log</b> are your organisation's data: please ask your organisation. If you write to us about them, we pass your request to your organisation and help it answer.</li>
+  <li><b>Service logs and sign-in sessions:</b> write to <a href="mailto:waddah.alhajar@expecta.io">waddah.alhajar@expecta.io</a>. We answer within one month, or tell you why we need longer. Logs can be found only by time and IP address. Signing out ends your session at once. Logs cannot be edited; erasing them before their 30 days end can take up to a further 30 days.</li>
+</ul>
+<p>You can also complain to the Italian data protection authority (Garante per la protezione dei dati personali, <a href="https://www.garanteprivacy.it">garanteprivacy.it</a>) or the authority in your country.</p>
+
+<h2>Changes</h2>
+<p>We will publish changes to this policy on this page and update the date above.</p>
+
+</main>
+</body>
+</html>

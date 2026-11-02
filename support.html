@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expecta Write-back · Support</title>
+<style>
+  :root { --navy:#002199; --amber:#FFA400; --line:#D9E4F2; --card:#F3F7FC; --grey:#808080; }
+  body { margin:0; background:#fff; color:#000; font:16px/1.6 "Segoe UI", system-ui, sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:48px 16px 64px; }
+  .eyebrow { font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; }
+  h1 { font:700 34px/1.2 Montserrat, "Segoe UI", sans-serif; color:var(--navy); margin:6px 0 4px; }
+  h1 .dot { color:var(--amber); }
+  h2 { font:600 19px/1.3 "Segoe UI", sans-serif; color:var(--navy); margin:32px 0 8px; }
+  table { border-collapse:collapse; width:100%; margin:8px 0; font-size:15px; }
+  th, td { text-align:left; vertical-align:top; padding:8px 10px; border-bottom:1px solid var(--line); }
+  th { background:var(--card); color:var(--navy); font-weight:600; }
+  .card { background:var(--card); border-radius:8px; padding:14px 18px; }
+  .muted { color:var(--grey); font-size:14px; }
+  a { color:var(--navy); }
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">Expecta Write-back</div>
+<h1>Support<span class="dot">.</span></h1>
+<p>Expecta Write-back lets your users edit and add rows in a Power BI report and save them to your data warehouse, as themselves and within their row-level security.</p>
+
+<div class="card">
+  <b>Contact us:</b> <a href="mailto:waddah.alhajar@expecta.io">waddah.alhajar@expecta.io</a><br>
+  Support hours: 9:30–18:30, Rome time. When something fails, the visual shows a <b>reference code</b>: include it, so we can find the request.
+</div>
+
+<h2>Set up (administrators, once)</h2>
+<ol>
+  <li><b>Approve the application:</b> a Microsoft Entra administrator consents to "Expecta Write-back" for your organisation. We send you the consent link.</li>
+  <li><b>Power BI tenant setting:</b> Admin portal → Tenant settings → Power BI visuals → <b>AppSource Custom Visuals SSO</b> → Enabled (for everyone, or for the groups that will edit).</li>
+  <li><b>Add the visual</b> from AppSource to your <b>organizational visuals</b>, so your report authors find it and you control updates.</li>
+  <li><b>Licences:</b> assign Expecta Write-back licences to the editing users in the Microsoft 365 admin center.</li>
+  <li><b>Database:</b> your database administrator gives the Expecta Write-back service access to the tables you want to edit (we provide the script), and we enable those tables on our side.</li>
+  <li><b>Users</b> who edit need Build permission on the report's semantic model.</li>
+</ol>
+
+<h2>Use (report authors)</h2>
+<ol>
+  <li>Add the visual. <b>Row key:</b> the column(s) that identify a row in the database table. <b>Values:</b> the columns to show; plain columns can be edited.</li>
+  <li>Format pane → <b>Connection</b>: service URL, the semantic model's ID, the database table (<code>schema.table</code>) and the <b>access columns</b> (the columns your row-level security filters on; needed to add rows).</li>
+  <li>Users edit cells or add rows, then <b>Save</b>. Only changed cells are sent.</li>
+</ol>
+
+<h2>Common messages</h2>
+<table>
+  <tr><th>The visual says</th><th>What to do</th></tr>
+  <tr><td>"Power BI sign-in for visuals is turned off by your admin"</td><td>Enable <i>AppSource Custom Visuals SSO</i> (step 2 above). A tenant setting can take a while to apply; then reload the report.</td></tr>
+  <tr><td>"Power BI didn't let us check your access…"</td><td>The application isn't approved for your organisation yet (step 1), or the user lacks Build permission (step 6).</td></tr>
+  <tr><td>"You can't edit some of these rows" / "You can't add rows for these … values"</td><td>Your row-level security doesn't include those rows. Nothing was saved.</td></tr>
+  <tr><td>"… is not enabled for write-back"</td><td>Ask us to enable that table (step 5).</td></tr>
+  <tr><td>"Showing the first 1,000 rows"</td><td>Use slicers or filters to reach the other rows.</td></tr>
+  <tr><td>"The write-back service hit an error, nothing was saved … reference …"</td><td>Try again; if it repeats, send us the reference.</td></tr>
+</table>
+
+<h2>Limits</h2>
+<ul>
+  <li>Rows can be edited and added, not deleted.</li>
+  <li>Up to 1,000 rows per visual, 200 changed cells and 50 new rows per save.</li>
+  <li>Editing needs a signed-in Power BI user, so it doesn't work in Publish to web. Embedded reports and Power BI Report Server are not tested yet.</li>
+</ul>
+
+<p class="muted">Privacy: <a href="https://expecta-team.github.io/expecta-writeback-legal/privacy.html">Expecta Write-back privacy policy</a>. Expecta Srl, Via Bezzecca 3, 00185 Roma, Italy · VAT IT17186851006 · expecta.ai</p>
+</main>
+</body>
+</html>
