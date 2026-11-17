@@ -27,7 +27,7 @@
 <p>Expecta Write-back lets your users edit and add rows in a Power BI report and save them to your data warehouse, as themselves and within their row-level security.</p>
 
 <div class="card">
-  <b>Contact us:</b> <a href="mailto:waddah.alhajar@expecta.io">waddah.alhajar@expecta.io</a><br>
+  <b>Contact us:</b> <a href="mailto:admin@expecta.io">admin@expecta.io</a><br>
   Support hours: 9:30–18:30, Rome time. When something fails, the visual shows a <b>reference code</b>: include it, so we can find the request.
 </div>
 
@@ -37,14 +37,14 @@
   <li><b>Power BI tenant setting:</b> Admin portal → Tenant settings → Power BI visuals → <b>AppSource Custom Visuals SSO</b> → Enabled (for everyone, or for the groups that will edit).</li>
   <li><b>Add the visual</b> from AppSource to your <b>organizational visuals</b>, so your report authors find it and you control updates.</li>
   <li><b>Licences:</b> assign Expecta Write-back licences to the editing users in the Microsoft 365 admin center.</li>
-  <li><b>Database:</b> your database administrator gives the Expecta Write-back service access to the tables you want to edit (we provide the script), and we enable those tables on our side.</li>
+  <li><b>Database:</b> your database administrator runs our setup script once, enables the tables you want to edit in its table <code>Writeback.Tables</code>, and gives the Expecta Write-back application access to those tables. No step is needed on our side.</li>
   <li><b>Users</b> who edit need Build permission on the report's semantic model.</li>
 </ol>
 
 <h2>Use (report authors)</h2>
 <ol>
   <li>Add the visual. <b>Row key:</b> the column(s) that identify a row in the database table. <b>Values:</b> the columns to show; plain columns can be edited.</li>
-  <li>Format pane → <b>Connection</b>: service URL, the semantic model's ID, the database table (<code>schema.table</code>) and the <b>access columns</b> (the columns your row-level security filters on; needed to add rows).</li>
+  <li>Format pane → <b>Connection</b>: the semantic model's ID, the database table (<code>schema.table</code>) and the <b>access columns</b> (the columns your row-level security filters on; needed to add rows).</li>
   <li>Users edit cells or add rows, then <b>Save</b>. Only changed cells are sent.</li>
 </ol>
 
